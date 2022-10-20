@@ -1,0 +1,15 @@
+C:\Users\laric\source\repos\HashTable\HashTable\bin\Debug\net6.0\HashTableProgram.exe
+C:\Users\laric\source\repos\HashTable\HashTable\bin\Debug\net6.0\HashTableProgram.deps.json
+C:\Users\laric\source\repos\HashTable\HashTable\bin\Debug\net6.0\HashTableProgram.runtimeconfig.json
+C:\Users\laric\source\repos\HashTable\HashTable\bin\Debug\net6.0\HashTableProgram.dll
+C:\Users\laric\source\repos\HashTable\HashTable\bin\Debug\net6.0\HashTableProgram.pdb
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.csproj.AssemblyReference.cache
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.AssemblyInfoInputs.cache
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.AssemblyInfo.cs
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.csproj.CoreCompileInputs.cache
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.dll
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\refint\HashTableProgram.dll
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.pdb
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\HashTableProgram.genruntimeconfig.cache
+C:\Users\laric\source\repos\HashTable\HashTable\obj\Debug\net6.0\ref\HashTableProgram.dll
