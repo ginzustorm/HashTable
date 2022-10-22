@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static Program;
 
 namespace HashTableProgram
 {
@@ -12,6 +14,11 @@ namespace HashTableProgram
     {
         const int TABLE_SIZE = 100;
         public Cell[] table = new Cell[TABLE_SIZE];
+
+        // Создание события
+        public event Action AddElement;
+        // Чаще всего используемое
+        public event EventHandler SearchElement;
 
         private int hashFunc(int key)
         {
@@ -25,6 +32,8 @@ namespace HashTableProgram
             if (table[currentIndex] == null)
             {
                 table[currentIndex] = cell;
+                // Событие
+                AddElement.Invoke();
             }
             else
             {
@@ -34,6 +43,7 @@ namespace HashTableProgram
                     currentCell = currentCell.next;
                 }
                 currentCell.next = cell;
+                AddElement.Invoke();
             }
         }
 
@@ -53,6 +63,8 @@ namespace HashTableProgram
                     if (currentCell.data.name.Equals(name))
                     {
                         Console.WriteLine(currentCell.data.name + "\t" + currentCell.data.category + "\t" + currentCell.data.price);
+                        var args = new EventArgs();
+                        SearchElement.Invoke(this.table[currentIndex].data.name, args);
                         return true;
                     }
                     else
@@ -119,6 +131,22 @@ namespace HashTableProgram
                     Console.WriteLine();
                 }
             }
+        }
+
+        //Для отработки делегатов
+        public void PrintCategory(int index)
+        {
+            Console.WriteLine(table[index].data.category);
+        }
+
+        public void PrintPrice(int index)
+        {
+            Console.WriteLine(table[index].data.price);
+        }
+
+        public void PrintName(int index)
+        {
+            Console.WriteLine(table[index].data.name);
         }
     }
 }
