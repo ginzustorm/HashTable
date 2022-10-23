@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using static Program;
-
-namespace HashTableProgram
+﻿namespace HashTableProgram
 {
     public class HashTable
     {
@@ -20,14 +10,14 @@ namespace HashTableProgram
         // Чаще всего используемое
         public event EventHandler SearchElement;
 
-        private int hashFunc(int key)
+        private static int HashFunc(int key)
         {
             return key % TABLE_SIZE;
         }
 
         public void Add(Cell cell)
         {
-            int currentIndex = hashFunc(cell.data.key);
+            int currentIndex = HashFunc(cell.data.key);
             Cell currentCell;
             if (table[currentIndex] == null)
             {
@@ -49,7 +39,7 @@ namespace HashTableProgram
 
         public bool Search(string name)
         {
-            int currentIndex = hashFunc(Cell.Data.getKey(name));
+            int currentIndex = HashFunc(Cell.Data.getKey(name));
             if (table[currentIndex] == null)
             {
                 Console.WriteLine("Элемент не найден. ");
@@ -60,11 +50,11 @@ namespace HashTableProgram
                 Cell currentCell = table[currentIndex];
                 while (currentCell != null)
                 {
-                    if (currentCell.data.name.Equals(name))
+                    if (currentCell.data.Name.Equals(name))
                     {
-                        Console.WriteLine(currentCell.data.name + "\t" + currentCell.data.category + "\t" + currentCell.data.price);
+                        Console.WriteLine(currentCell.data.Name + "\t" + currentCell.data.category + "\t" + currentCell.data.price);
                         var args = new EventArgs();
-                        SearchElement.Invoke(this.table[currentIndex].data.name, args);
+                        SearchElement.Invoke(this.table[currentIndex].data.Name, args);
                         return true;
                     }
                     else
@@ -80,10 +70,10 @@ namespace HashTableProgram
         {
             if (Search(name))
             {
-                int currentIndex = hashFunc(Cell.Data.getKey(name));
+                int currentIndex = HashFunc(Cell.Data.getKey(name));
                 Cell currentCell = table[currentIndex];
                 int i = 0;
-                if (currentCell.data.name.Equals(name))
+                if (currentCell.data.Name.Equals(name))
                 {
                     table[currentIndex] = table[currentIndex].next;
                     Console.WriteLine(name + " удален");
@@ -91,7 +81,7 @@ namespace HashTableProgram
                 }
                 else
                 {
-                    while (!currentCell.next.data.name.Equals(name))
+                    while (!currentCell.next.data.Name.Equals(name))
                     {
                         currentCell = currentCell.next;
                     }
@@ -125,7 +115,7 @@ namespace HashTableProgram
                     Console.Write($"{i}: ");
                     while (currentCell != null)
                     {
-                        Console.Write($"[{currentCell.data.name}, {currentCell.data.category}, {currentCell.data.price}] ");
+                        Console.Write($"[{currentCell.data.Name}, {currentCell.data.category}, {currentCell.data.price}] ");
                         currentCell = currentCell.next;
                     }
                     Console.WriteLine();
@@ -146,7 +136,7 @@ namespace HashTableProgram
 
         public void PrintName(int index)
         {
-            Console.WriteLine(table[index].data.name);
+            Console.WriteLine(table[index].data.Name);
         }
     }
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace HashTableProgram;
+﻿namespace HashTableProgram;
 
 public class Cell
 {
@@ -19,7 +12,7 @@ public class Cell
 
     public class Data
     {
-        public string name { get; set; }
+        public string Name { get; set; }
         public int key;
         private List<string> categoryList = new List<string>() { "CPU", "MOTHERBOARD", "RAM", "GPU", "COOLER" };
         public string category;
@@ -27,11 +20,10 @@ public class Cell
 
         public Data(string name, string category, int price)
         {
-            if (name == null) throw new ArgumentNullException("Имя товара не может быть равно null", nameof(name));
             if (category == null || !this.categoryList.Contains(category)) throw new Exception("Категория не найдена или равна null");
-            if (price < 0 || price == null) throw new Exception("Цена меньше нуля или null");
+            if (price < 0) throw new Exception("Цена меньше нуля");
 
-            this.name = name;
+            this.Name = name ?? throw new ArgumentNullException("Имя товара не может быть равно null", nameof(name));
             this.price = price;
             this.category = category;
             this.key = getKey(name);

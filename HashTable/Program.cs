@@ -4,7 +4,7 @@ using System.Reflection;
 
 public class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         HashTable hashTable = new HashTable();
         hashTable.AddElement += HashTable_AddElement;
@@ -36,14 +36,21 @@ public class Program
         //public Action<int> ActionDelegate; - шаблонный делегат без возвращаемого значения, но имеющий параметр(ы)
         //public Predicate<int> ActionDelegate; - шаблонный делегат, возвращающий bool, имеющий параметр(ы)
         //public Func<int, string> ActionDelegate; - int - параметр, последнее - возвращаемое значение. Должен возвращать значение
+        
+        Type type = typeof(HashTable);
+
+        var properties = type.GetProperties();
+        foreach(var prop in properties)
+        {
+            Console.WriteLine(prop.Name); 
+        }
         */
-
-
     }
 
     private static void HashTable_SearchElement(object? sender, EventArgs e)
     {
-        Console.WriteLine($"{(String)sender} - искомый элемент (событие обработано)");
+        if (sender as string == null) { return; }
+        Console.WriteLine($"{(string)sender} - искомый элемент (событие обработано)");
     }
 
     private static void HashTable_AddElement()
@@ -51,7 +58,7 @@ public class Program
         Console.WriteLine("Обработчик события добавления элемента");
     }
 
-    public delegate void tableDelegate(int i);
+    //public delegate void tableDelegate(int i);
 }
 
 
