@@ -1,8 +1,14 @@
-﻿namespace HashTableProgram
+﻿using System.Runtime.Serialization;
+
+namespace HashTableProgram
 {
+    [Serializable]
+    [DataContract]
     public class HashTable
     {
+        [DataMember]
         const int TABLE_SIZE = 100;
+        [DataMember]
         public Cell[] table = new Cell[TABLE_SIZE];
 
         // Создание события

@@ -1,22 +1,36 @@
-﻿namespace HashTableProgram;
+﻿using System.Runtime.Serialization;
 
+namespace HashTableProgram;
+
+[Serializable]
+[DataContract]
 public class Cell
 {
+    [DataMember]
     public Data data;
     public Cell next;
+
+    public Cell() { } // для xml
 
     public Cell(string name, string category, int price)
     {
         data = new Data(name, category, price);
     }
 
+    [Serializable]
+    [DataContract]
     public class Data
     {
+        [DataMember]
         public string Name { get; set; }
         public int key;
         private List<string> categoryList = new List<string>() { "CPU", "MOTHERBOARD", "RAM", "GPU", "COOLER" };
+        [DataMember]
         public string category;
+        [DataMember]
         public int price;
+
+        public Data() { } // для xml
 
         public Data(string name, string category, int price)
         {
