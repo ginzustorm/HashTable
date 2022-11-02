@@ -144,5 +144,23 @@ namespace HashTableProgram
         {
             Console.WriteLine(table[index].data.Name);
         }
+
+        public void InputFromFile(HashTable hashtable, string _path)
+        {
+            string currStr = String.Empty;
+            using(var sr = new StreamReader(_path))
+            {
+                if (sr == null)
+                {
+                    throw new ArgumentNullException("Пустой файл input", nameof(sr));
+                }
+                while (!sr.EndOfStream)
+                {
+                    currStr = sr.ReadLine();
+                    string[] info = currStr.Split(" ");
+                    hashtable.Add(new Cell(info[0], info[1], int.Parse(info[2])));
+                }
+            }
+        }
     }
 }
